@@ -1,0 +1,39 @@
+{
+    "carrier": "ShipXpress",
+    "tracking_code": "K1R6Q8F3B",
+    "package_information": {
+        "status": "READY FOR PICKUP",
+        "service_type": "Ground Delivery",
+        "weight": "Approx. 3 lbs (Jewelry Box)",
+        "dimensions": "Approx. 10\" \u00d7 6\" \u00d7 4\""
+    },
+    "shipping_information": {
+        "origin": "Los Angeles, CA",
+        "destination": "London, UK",
+        "estimated_delivery": "7 Days",
+        "last_update": "2025-12-02 07:24:03"
+    },
+    "tracking_timeline": [
+        {
+            "event": "Package Processed",
+            "location": "Los Angeles, CA"
+        },
+        {
+            "event": "In Transit",
+            "location": "En Route"
+        },
+        {
+            "event": "Out for Delivery",
+            "location": "London, UK"
+        },
+        {
+            "event": "Delivered",
+            "location": "London, UK"
+        }
+    ],
+    "custom_fee": "\u00a3300",
+    "contact": {
+        "email": "ShipXpress2025@gmail.com",
+        "whatsapp": "+1 (541) 568 9803"
+    }
+}
