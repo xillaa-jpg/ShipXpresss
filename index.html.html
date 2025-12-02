@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShipXpress - Reliable Delivery Solutions</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        color: #333;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+
+    header {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+    }
+
+    nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 0;
+    }
+
+    .logo {
+        font-size: 2rem;
+        font-weight: 800;
+        color: #667eea;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+    }
+
+    .nav-links {
+        display: flex;
+        list-style: none;
+        gap: 2rem;
+    }
+
+    .nav-links a {
+        text-decoration: none;
+        color: #333;
+        font-weight: 500;
+        transition: color 0.3s ease;
+    }
+
+    .nav-links a:hover {
+        color: #667eea;
+    }
+
+    .contact-btn {
+        background: linear-gradient(45deg, #667eea, #764ba2);
+        color: white;
+        padding: 12px 24px;
+        border: none;
+        border-radius: 25px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    .contact-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+    }
+
+    .hero {
+        padding: 4rem 0;
+        text-align: center;
+        color: white;
+    }
+
+    .hero h1 {
+        font-size: 3.5rem;
+        font-weight: 800;
+        margin-bottom: 1rem;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .hero p {
+        font-size: 1.3rem;
+        margin-bottom: 3rem;
+        opacity: 0.9;
+    }
+
+    .tracking-section {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(15px);
+        border-radius: 20px;
+        padding: 3rem;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+        max-width: 600px;
+        margin: 0 auto 4rem;
+    }
+
+    .tracking-section h2 {
+        color: #333;
+        margin-bottom: 2rem;
+        font-size: 2rem;
+        text-align: center;
+    }
+
+    .tracking-form {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .input-group {
+        position: relative;
+    }
+
+    .tracking-input {
+        width: 100%;
+        padding: 15px 20px;
+        font-size: 1.1rem;
+        border: 2px solid #e0e0e0;
+        border-radius: 15px;
+        outline: none;
+        transition: all 0.3s ease;
+    }
+
+    .tracking-input:focus {
+        border-color: #667eea;
+        box-shadow: 0 0 20px rgba(102, 126, 234, 0.2);
+    }
+
+    .track-btn {
+        background: linear-gradient(45deg, #667eea, #764ba2);
+        color: white;
+        padding: 15px 30px;
+        border: none;
+        border-radius: 15px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    .track-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+    }
+
+    .services {
+        padding: 4rem 0;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+    }
+
+    .services h2 {
+        text-align: center;
+        color: white;
+        font-size: 2.5rem;
+        margin-bottom: 3rem;
+    }
+
+    .service-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+    }
+
+    .service-card {
+        background: rgba(255, 255, 255, 0.9);
+        padding: 2rem;
+        border-radius: 15px;
+        text-align: center;
+        transition: transform 0.3s ease;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .service-card:hover {
+        transform: translateY(-10px);
+    }
+
+    .service-icon {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        color: #667eea;
+    }
+
+    .footer {
+        background: rgba(0, 0, 0, 0.8);
+        color: white;
+        padding: 2rem 0;
+        text-align: center;
+    }
+
+    .footer p {
+        opacity: 0.8;
+    }
+
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 10000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+        backdrop-filter: blur(5px);
+    }
+
+    .modal-content {
+        background: white;
+        margin: 15% auto;
+        padding: 3rem;
+        border-radius: 20px;
+        width: 90%;
+        max-width: 500px;
+        text-align: center;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        animation: modalFadeIn 0.3s ease;
+    }
+
+    @keyframes modalFadeIn {
+        from { opacity: 0; transform: translateY(-50px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+        cursor: pointer;
+        line-height: 1;
+    }
+
+    .close:hover {
+        color: #000;
+    }
+
+    .contact-info {
+        margin-top: 2rem;
+    }
+
+    .contact-info h3 {
+        color: #667eea;
+        margin-bottom: 1rem;
+    }
+
+    .contact-details {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .contact-item {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        padding: 10px;
+        background: #f8f9fa;
+        border-radius: 10px;
+    }
+
+    .contact-item strong {
+        color: #667eea;
+    }
+
+    @media (max-width: 768px) {
+        .hero h1 {
+            font-size: 2.5rem;
+        }
+
+        .nav-links {
+            display: none;
+        }
+
+        .tracking-section {
+            padding: 2rem 1rem;
+            margin: 0 1rem 2rem;
+        }
+    }
+</style>
+
+
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">ShipXpress</div>
+            <ul class="nav-links">
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="index.html#services">Services</a></li>
+                <li><a href="index.html#tracking">Tracking</a></li>
+                <li><a href="index.html#about">About</a></li>
+            </ul>
+            <button class="contact-btn" onclick="openContactModal()">Contact Us</button>
+        </nav>
+    </header>
+
+
+<main>
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>ShipXpress</h1>
+            <p>Your Trusted Partner in Fast, Reliable, and Secure Delivery Solutions</p>
+
+            <div class="tracking-section" id="tracking">
+                <h2>Track Your Package</h2>
+                <form class="tracking-form" onsubmit="trackPackage(event)">
+                    <div class="input-group">
+                        <input
+                            type="text"
+                            class="tracking-input"
+                            id="trackingNumber"
+                            placeholder="Enter your tracking number"
+                            required
+                        >
+                    </div>
+                    <button type="submit" class="track-btn">Track Package</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <section class="services" id="services">
+        <div class="container">
+            <h2>Our Services</h2>
+            <div class="service-grid">
+                <div class="service-card">
+                    <div class="service-icon">🚚</div>
+                    <h3>Express Delivery</h3>
+                    <p>Fast and reliable delivery service with real-time tracking for urgent packages.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">📦</div>
+                    <h3>Standard Shipping</h3>
+                    <p>Cost-effective shipping solutions for regular deliveries with guaranteed safety.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🌍</div>
+                    <h3>International Shipping</h3>
+                    <p>Worldwide delivery services with customs clearance and door-to-door delivery.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🔒</div>
+                    <h3>Secure Transport</h3>
+                    <p>High-security transport for valuable items with comprehensive insurance coverage.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="about" id="about">
+        <div class="container">
+            <div style="background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(15px); border-radius: 20px; padding: 3rem; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1); margin: 2rem 0;">
+                <h2 style="color: #333; margin-bottom: 2rem; font-size: 2.5rem; text-align: center;">About A1 INNOVECS</h2>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; align-items: center;">
+                    <div>
+                        <h3 style="color: #667eea; margin-bottom: 1rem;">Our Story</h3>
+                        <p style="margin-bottom: 1rem; color: #555; line-height: 1.8;">ShipXpress Logistics has been at the forefront of delivery innovation since our establishment. We pride ourselves on providing cutting-edge logistics solutions that meet the evolving needs of our customers worldwide.</p>
+                        <p style="margin-bottom: 1rem; color: #555; line-height: 1.8;">Our commitment to excellence, reliability, and customer satisfaction has made us a trusted partner for businesses and individuals across North America and beyond.</p>
+                    </div>
+                    <div>
+                        <h3 style="color: #667eea; margin-bottom: 1rem;">Head Office</h3>
+                        <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 15px; border-left: 4px solid #667eea;">
+                            <p style="color: #333; font-weight: 600; margin-bottom: 0.5rem;">📍 ShipXpress</p>
+                            <p style="color: #666; margin-bottom: 0.5rem;">Los Angeles, CA</p>
+                            <p style="color: #666; margin-bottom: 0.5rem;">United States</p>
+                            <p style="color: #667eea; font-weight: 500;">Serving customers nationwide with excellence</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer class="footer">
+    <div class="container">
+        <p>&copy; 2025 ShipXpress. All rights reserved. | Professional Delivery Solutions</p>
+    </div>
+</footer>
+
+<!-- Contact Modal -->
+<div id="contactModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeContactModal()">&times;</span>
+        <h2>Contact ShipXpress</h2>
+        <div class="contact-info">
+            <h3>Get in Touch</h3>
+            <div class="contact-details">
+                <div class="contact-item">
+                    <strong>Email:</strong> ShipXpress@gmail.com
+                </div>
+                <div class="contact-item">
+                    <strong>Telegram:</strong> @innovecssupport
+                </div>
+                <div class="contact-item">
+                    <strong>Available:</strong> 24/7 Customer Support
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Contact Modal Functions
+    function openContactModal() {
+        document.getElementById('contactModal').style.display = 'block';
+    }
+
+    function closeContactModal() {
+        document.getElementById('contactModal').style.display = 'none';
+    }
+
+    // Close modal when clicking outside
+    window.onclick = function(event) {
+        const modal = document.getElementById('contactModal');
+        if (event.target === modal) {
+            modal.style.display = 'none';
+        }
+    }
+
+    // Valid tracking numbers array - 20 random tracking IDs
+    const validTrackingNumbers = [
+        'A1X7K9M2P', 'B3N8R5Q1W', 'C9F2L6Y4T', 'D4H7V3Z8G', 'E6M1X9K5N',
+        'F8Q3B7R2S', 'G2W9T4J6L', 'H5Z8P1C3V', 'J7M4N9X2K', 'K1R6Q8F3B',
+        'L9Y2T7H5G', 'M3V8Z1W4P', 'N6K5L9R7Q', 'P4B3X8M1C', 'Q8F7V2N6J',
+        'R2G9K4T1Z', 'S5L8Q3W7Y', 'T9H6P2M4X', 'V1C7R5B8N', 'W3Z4K9L6Q'
+    ];
+
+    // Tracking Form Function
+    function trackPackage(event) {
+        event.preventDefault();
+        const trackingNumber = document.getElementById('trackingNumber').value.trim().toUpperCase();
+
+        if (!trackingNumber) {
+            showError('Please enter a tracking number.');
+            return;
+        }
+
+        if (validTrackingNumbers.includes(trackingNumber)) {
+            // Show success message
+            showSuccess('Tracking number found! Redirecting...');
+            // Redirect to status.html with tracking number as parameter
+            setTimeout(() => {
+                window.location.href = `status.html?tracking=${encodeURIComponent(trackingNumber)}`;
+            }, 1500);
+        } else {
+            showError('Invalid tracking number. Please check your tracking ID and try again.');
+        }
+    }
+
+    // Show error message
+    function showError(message) {
+        const errorDiv = document.getElementById('trackingError') || createMessageDiv('trackingError', 'error');
+        errorDiv.textContent = message;
+        errorDiv.style.display = 'block';
+        setTimeout(() => {
+            errorDiv.style.display = 'none';
+        }, 5000);
+    }
+
+    // Show success message
+    function showSuccess(message) {
+        const successDiv = document.getElementById('trackingSuccess') || createMessageDiv('trackingSuccess', 'success');
+        successDiv.textContent = message;
+        successDiv.style.display = 'block';
+        setTimeout(() => {
+            successDiv.style.display = 'none';
+        }, 3000);
+    }
+
+    // Create message div
+    function createMessageDiv(id, type) {
+        const messageDiv = document.createElement('div');
+        messageDiv.id = id;
+        messageDiv.style.cssText = `
+            padding: 12px 20px;
+            margin: 10px 0;
+            border-radius: 8px;
+            font-weight: 500;
+            text-align: center;
+            display: none;
+            ${type === 'error' ?
+                'background: #fee; color: #c33; border: 1px solid #fcc;' :
+                'background: #efe; color: #393; border: 1px solid #cfc;'
+            }
+        `;
+        document.querySelector('.tracking-form').appendChild(messageDiv);
+        return messageDiv;
+    }
+
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+
+    // Add loading animation to track button
+    function showLoading(button) {
+        const originalText = button.textContent;
+        button.textContent = 'Tracking...';
+        button.disabled = true;
+
+        setTimeout(() => {
+            button.textContent = originalText;
+            button.disabled = false;
+        }, 1000);
+    }
+
+    // Enhanced form submission with loading state
+    document.querySelector('.tracking-form').addEventListener('submit', function(e) {
+        const submitBtn = this.querySelector('.track-btn');
+        showLoading(submitBtn);
+    });
+</script>
+
+
+</body>
+</html>
